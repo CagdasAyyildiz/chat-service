@@ -5,14 +5,10 @@ const Room = require('./models/Room')
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const morgan = require('morgan');
-const cors = require('cors');
 const PORT = process.env.PORT || '3000';
 
-
-io.origins([`https://vevericka-chat-service.herokuapp.com/:${PORT}`]);
 dotenv.config();
 app.use(morgan('[:date[web]] || :method :url  || Status: :status || Response time: :response-time ms'));
-app.use(cors());
 
 const MONGOOSE_OPTIONS = {useNewUrlParser: true, useUnifiedTopology: true};
 mongoose.connect(process.env.DB_CONNECTION, MONGOOSE_OPTIONS, () => {
