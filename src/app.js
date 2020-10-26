@@ -1,25 +1,19 @@
 const app = require('express')();
 const http = require('http').createServer(app);
-const io = require('socket.io')(http);
+const io = require('socket.io')(http, {origins: '*:*'});
 const Room = require('./models/Room')
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const morgan = require('morgan');
-
+const cors = require('cors');
 
 dotenv.config();
 app.use(morgan('[:date[web]] || :method :url  || Status: :status || Response time: :response-time ms'));
+app.use(cors());
 
 const MONGOOSE_OPTIONS = {useNewUrlParser: true, useUnifiedTopology: true};
 mongoose.connect(process.env.DB_CONNECTION, MONGOOSE_OPTIONS, () => {
     console.log('Connected to MongoDB database');
-});
-
-io.origins((origin, callback) => {
-    if (origin !== '*') {
-        return callback('origin not allowed', false);
-    }
-    callback(null, true);
 });
 
 io.on('connection', (socket) => {
@@ -31,7 +25,7 @@ io.on('connection', (socket) => {
                 users,
                 messages: [],
             });
-            await room.save();
+            //await room.save();
         }
         io.emit('load messages', oldMessages);
         socket.on('new message', async (data) => {
