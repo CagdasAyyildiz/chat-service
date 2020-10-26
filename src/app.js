@@ -6,8 +6,10 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const morgan = require('morgan');
 const cors = require('cors');
-io.origins(['*:*']);
+const PORT = process.env.PORT || '3000';
 
+
+io.origins([`https://vevericka-chat-service.herokuapp.com/:${PORT}`]);
 dotenv.config();
 app.use(morgan('[:date[web]] || :method :url  || Status: :status || Response time: :response-time ms'));
 app.use(cors());
@@ -44,7 +46,6 @@ io.on('connection', (socket) => {
 
 });
 
-const PORT = process.env.PORT || '3000';
 http.listen(PORT, () => {
     console.log('listening on *:3000');
 });
