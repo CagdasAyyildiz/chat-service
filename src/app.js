@@ -1,6 +1,6 @@
 const app = require('express')();
 const http = require('http').createServer(app);
-const io = require('socket.io')(http, {origins: '*:*'});
+const io = require('socket.io')(http, {origins: 'https://vevericka-chat-service.herokuapp.com/:*'});
 const Room = require('./models/Room')
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
