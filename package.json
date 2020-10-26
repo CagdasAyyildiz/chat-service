@@ -12,10 +12,10 @@
     "express": "~4.16.1",
     "mongoose": "^5.10.9",
     "morgan": "~1.9.1",
-    "socket.io": "^2.3.0"
+    "socket.io": "^2.3.0",
+    "cors": "^2.8.5"
   },
   "devDependencies": {
-    "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "nodemon": "^2.0.5"
   }
