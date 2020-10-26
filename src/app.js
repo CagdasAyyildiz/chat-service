@@ -1,11 +1,12 @@
 const app = require('express')();
 const http = require('http').createServer(app);
-const io = require('socket.io')(http, {origins: 'https://vevericka-chat-service.herokuapp.com/:*'});
+const io = require('socket.io')(http, {origins: '*:*'});
 const Room = require('./models/Room')
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const morgan = require('morgan');
 const cors = require('cors');
+io.origins(['https://vevericka-chat-service.herokuapp.com/:*']);
 
 dotenv.config();
 app.use(morgan('[:date[web]] || :method :url  || Status: :status || Response time: :response-time ms'));
