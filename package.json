@@ -15,7 +15,8 @@
     "socket.io": "^2.3.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.5",
-    "dotenv": "^8.2.0"
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "nodemon": "^2.0.5"
   }
 }
