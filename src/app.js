@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const morgan = require('morgan');
 const cors = require('cors');
-io.origins(['https://vevericka-chat-service.herokuapp.com/:*']);
+io.origins(['*:*']);
 
 dotenv.config();
 app.use(morgan('[:date[web]] || :method :url  || Status: :status || Response time: :response-time ms'));
