@@ -17,6 +17,8 @@ mongoose.connect(process.env.DB_CONNECTION, MONGOOSE_OPTIONS, () => {
     console.log('Connected to MongoDB database');
 });
 
+io.origins('*:*') // for latest version
+
 io.on('connection', (socket) => {
     socket.on('initialize', async (users) => {
         let oldMessages = await Room.findOne({users});
